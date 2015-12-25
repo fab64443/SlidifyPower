@@ -43,14 +43,22 @@
     <!-- SLIDES -->
     <slide class="" id="slide-1" style="background:;">
   <hgroup>
-    <h2>Read-And-Delete</h2>
+    <h2>What is power?</h2>
   </hgroup>
   <article data-timings="">
-    <ol>
-<li>Edit YAML front matter</li>
-<li>Write using R Markdown</li>
-<li>Use an empty line followed by three dashes to separate slides!</li>
-</ol>
+    <p>The power of a hypothesis test is the is the probability that the test correctly rejects the null hypothesis. The power of a hypothesis test is affected by:</p>
+
+<ul>
+<li>the sample size,</li>
+<li>the difference between the value under the null hypothesis and the real value,</li>
+<li>the variability of the data,</li>
+<li>the significance level of the test.</li>
+</ul>
+
+<p>If a test has low power, you might fail to detect an effect and mistakenly conclude that none exists.
+If a test has power that is too high, very small and possibly uninteresting effects might seem to be significant. </p>
+
+<p>No test is perfect: there is always the possibility that the results of a test will lead you to reject the null hypothesis (H0) when it is actually true (a type I error) or to fail to reject H0 when it is actually false (a type II error).</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -58,37 +66,44 @@
 
 <slide class="class" id="id" style="background:;">
   <hgroup>
-    <h2>Slide 3</h2>
+    <h2>The ShinyPower App</h2>
   </hgroup>
   <article data-timings="">
-    
+    <p>The ShinyPower app is an interactive visualisation of the power of a hypothesis test.</p>
+
+<p>The controls in the sidebar allow you to change the values of the parameters that affect the power.</p>
+
+<p><img src="images/shinypower02.png" alt="alt text">
+<img src="images/shinypower01.png" alt="alt text"></p>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="class" id="id" style="background:;">
   <hgroup>
-    <h2>Slide 4</h2>
+    <h2>Usage</h2>
   </hgroup>
   <article data-timings="">
-    
+    <pre><code class="r">mu0 = 30 ; mua = 34 ; sd = 10.0/sqrt(30) ; alpha = 0.05 ; zcrit2 = mu0 + qnorm(1-alpha)*sd
+power = pnorm(zcrit2,mua,sd,lower.tail=FALSE)
+power
+</code></pre>
+
+<pre><code>## [1] 0.7074796
+</code></pre>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="class" id="id" style="background:;">
   <hgroup>
-    <h2>Slide 5</h2>
+    <h2>Why Power is important</h2>
   </hgroup>
   <article data-timings="">
-    
-  </article>
-  <!-- Presenter Notes -->
-</slide>
+    <p>Alpha is the probability of making a Type I error when H0 is true. The acceptable Type I error rate is set before running the study. Before we collect our data we should perform a power analysis. Usually we specify the minimum effect (say Cohen&#39;s d = 0.5) we are interested in finding, set alpha to 0.05 and beta to 0.2 (i.e. 80% power). The power analysis will tell us how large our sample needs to be to achieve this power. Given this sample size, if we rerun our study many times with new random samples 80% of the time we will correctly reject the null hypothesis.</p>
 
-<slide class="class" id="id" style="background:;">
-  <article data-timings="">
-    
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -99,32 +114,26 @@
     <ul>
       <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=1 title='Read-And-Delete'>
+        data-slide=1 title='What is power?'>
          1
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Slide 3'>
+        data-slide=2 title='The ShinyPower App'>
          2
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='Slide 4'>
+        data-slide=3 title='Usage'>
          3
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='Slide 5'>
+        data-slide=4 title='Why Power is important'>
          4
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='NA'>
-         5
       </a>
     </li>
   </ul>

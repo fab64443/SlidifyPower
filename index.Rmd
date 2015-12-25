@@ -11,23 +11,48 @@ mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
 ---
 
-## Read-And-Delete
+## What is power?
 
-1. Edit YAML front matter
-2. Write using R Markdown
-3. Use an empty line followed by three dashes to separate slides!
+The power of a hypothesis test is the is the probability that the test correctly rejects the null hypothesis. The power of a hypothesis test is affected by:
+
+- the sample size,
+- the difference between the value under the null hypothesis and the real value,
+- the variability of the data,
+- the significance level of the test.
+
+If a test has low power, you might fail to detect an effect and mistakenly conclude that none exists.
+If a test has power that is too high, very small and possibly uninteresting effects might seem to be significant. 
+
+No test is perfect: there is always the possibility that the results of a test will lead you to reject the null hypothesis (H0) when it is actually true (a type I error) or to fail to reject H0 when it is actually false (a type II error).
+
+--- .class #id 
+
+## The ShinyPower App
+
+The ShinyPower app is an interactive visualisation of the power of a hypothesis test.
+
+The controls in the sidebar allow you to change the values of the parameters that affect the power.
+
+![alt text](images/shinypower02.png)
+![alt text](images/shinypower01.png)
 
 --- .class #id 
 
-## Slide 3
+## Usage
+
+blah blah 
+
+```{r}
+mu0 = 30 ; mua = 34 ; sd = 10.0/sqrt(30) ; alpha = 0.05 ; zcrit2 = mu0 + qnorm(1-alpha)*sd
+power = pnorm(zcrit2,mua,sd,lower.tail=FALSE)
+power
+```
+
+
 
 --- .class #id 
 
-## Slide 4
+## Why Power is important
 
---- .class #id 
-
-## Slide 5
-
---- .class #id 
+Alpha is the probability of making a Type I error when H0 is true. The acceptable Type I error rate is set before running the study. Before we collect our data we should perform a power analysis. Usually we specify the minimum effect (say Cohen's d = 0.5) we are interested in finding, set alpha to 0.05 and beta to 0.2 (i.e. 80% power). The power analysis will tell us how large our sample needs to be to achieve this power. Given this sample size, if we rerun our study many times with new random samples 80% of the time we will correctly reject the null hypothesis.
 
