@@ -16,7 +16,7 @@ knit        : slidify::knit2slides
 The power of a hypothesis test is the is the probability that the test correctly rejects the null hypothesis. The power of a hypothesis test is affected by:
 
 - the sample size ($n$),
-- the difference between the value under the null hypothesis and the real value  ($\mu_0-\mu_a$),
+- the difference between the value under the null hypothesis and the real value  ($\mu_a-\mu_0$),
 - the variability of the data ($\sigma$),
 - the significance level of the test ($\alpha$).
 
@@ -52,7 +52,7 @@ n=30; mu0=30; mua=34; alpha=0.05; sd=10.0/sqrt(n);  zcrit2=mu0+qnorm(1-alpha)*sd
 ## [1] 0.707
 ```
 
-If we really want detect a mean of 34 (rejecting $H_0:\mu=30$), we need a greater sample size:
+If we really want detect a mean of 34 (rejecting $H_0:\mu=30$ ), we need a greater sample size:
 
 
 ```r

@@ -50,7 +50,7 @@
 
 <ul>
 <li>the sample size (\(n\)),</li>
-<li>the difference between the value under the null hypothesis and the real value  (\(\mu_0-\mu_a\)),</li>
+<li>the difference between the value under the null hypothesis and the real value  (\(\mu_a-\mu_0\)),</li>
 <li>the variability of the data (\(\sigma\)),</li>
 <li>the significance level of the test (\(\alpha\)).</li>
 </ul>
@@ -94,7 +94,7 @@ If a test has power that is too high, very small and possibly uninteresting effe
 <pre><code>## [1] 0.707
 </code></pre>
 
-<p>If we really want detect a mean of 34 (rejecting \(H_0:\mu=30\)), we need a greater sample size:</p>
+<p>If we really want detect a mean of 34 (rejecting \(H_0:\mu=30\) ), we need a greater sample size:</p>
 
 <pre><code class="r">n=60; sd=10.0/sqrt(n);  zcrit2=mu0+qnorm(1-alpha)*sd
 (power = round(pnorm(zcrit2,mua,sd,lower.tail=FALSE),3))

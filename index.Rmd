@@ -47,7 +47,7 @@ n=30; mu0=30; mua=34; alpha=0.05; sd=10.0/sqrt(n);  zcrit2=mu0+qnorm(1-alpha)*sd
 (power = round(pnorm(zcrit2,mua,sd,lower.tail=FALSE),3))
 ```
 
-If we really want detect a mean of 34 (rejecting $H_0:\mu=30$), we need a greater sample size:
+If we really want detect a mean of 34 (rejecting $H_0:\mu=30$ ), we need a greater sample size:
 
 ```{r}
 n=60; sd=10.0/sqrt(n);  zcrit2=mu0+qnorm(1-alpha)*sd
