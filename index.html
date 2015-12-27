@@ -49,16 +49,16 @@
     <p>The power of a hypothesis test is the is the probability that the test correctly rejects the null hypothesis. The power of a hypothesis test is affected by:</p>
 
 <ul>
-<li>the sample size,</li>
-<li>the difference between the value under the null hypothesis and the real value,</li>
-<li>the variability of the data,</li>
-<li>the significance level of the test.</li>
+<li>the sample size (\(n\)),</li>
+<li>the difference between the value under the null hypothesis and the real value  (\(\mu_0-\mu_a\)),</li>
+<li>the variability of the data (\(\sigma\)),</li>
+<li>the significance level of the test (\(\alpha\)).</li>
 </ul>
 
 <p>If a test has low power, you might fail to detect an effect and mistakenly conclude that none exists.
 If a test has power that is too high, very small and possibly uninteresting effects might seem to be significant. </p>
 
-<p>No test is perfect: there is always the possibility that the results of a test will lead you to reject the null hypothesis (H0) when it is actually true (a type I error) or to fail to reject H0 when it is actually false (a type II error).</p>
+<p>No test is perfect: there is always the possibility that the results of a test will lead you to reject the null hypothesis (\(H_0\)) when it is actually true (a type I error) or to fail to reject \(H_0\) when it is actually false (a type II error).</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -85,12 +85,22 @@ If a test has power that is too high, very small and possibly uninteresting effe
     <h2>Usage</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">mu0 = 30 ; mua = 34 ; sd = 10.0/sqrt(30) ; alpha = 0.05 ; zcrit2 = mu0 + qnorm(1-alpha)*sd
-power = pnorm(zcrit2,mua,sd,lower.tail=FALSE)
-power
+    <p>To visualize the value of the power of your test hypothesis, simply play with the controls in the sidebar. Each time you modify a value, the plot is updated and the value of the power is calculated. Try to change the sample size, real mean value, the variability and the significance level and observe the blue area under the blue normal curve (the real distribution)</p>
+
+<pre><code class="r">n=30; mu0=30; mua=34; alpha=0.05; sd=10.0/sqrt(n);  zcrit2=mu0+qnorm(1-alpha)*sd
+(power = round(pnorm(zcrit2,mua,sd,lower.tail=FALSE),3))
 </code></pre>
 
-<pre><code>## [1] 0.7074796
+<pre><code>## [1] 0.707
+</code></pre>
+
+<p>If we really want detect a mean of 34 (rejecting \(H_0:\mu=30\)), we need a greater sample size:</p>
+
+<pre><code class="r">n=60; sd=10.0/sqrt(n);  zcrit2=mu0+qnorm(1-alpha)*sd
+(power = round(pnorm(zcrit2,mua,sd,lower.tail=FALSE),3))
+</code></pre>
+
+<pre><code>## [1] 0.927
 </code></pre>
 
   </article>
@@ -102,7 +112,26 @@ power
     <h2>Why Power is important</h2>
   </hgroup>
   <article data-timings="">
-    <p>Alpha is the probability of making a Type I error when H0 is true. The acceptable Type I error rate is set before running the study. Before we collect our data we should perform a power analysis. Usually we specify the minimum effect (say Cohen&#39;s d = 0.5) we are interested in finding, set alpha to 0.05 and beta to 0.2 (i.e. 80% power). The power analysis will tell us how large our sample needs to be to achieve this power. Given this sample size, if we rerun our study many times with new random samples 80% of the time we will correctly reject the null hypothesis.</p>
+    <p>\(\alpha\) is the probability of making a Type I error when \(H_0\) is true. The acceptable Type I error rate is set before running the study. Before we collect our data we should perform a power analysis. Usually we specify <strong>the minimum size effect we are interested in finding</strong>, set \(\alpha\) to 0.05 and \(\beta\) to 0.1 (i.e. 90% power). The power analysis will tell us <strong>how large</strong> our sample needs to be to achieve this power and <strong>correctly reject</strong> the null hypothesis.</p>
+
+<h3>Credits</h3>
+
+<p>Understanding Statistical Power and Significance Testing (<a href="http://rpsychologist.com/d3/NHST/">http://rpsychologist.com/d3/NHST/</a>)</p>
+
+<p>Stat Trek (<a href="http://stattrek.com/hypothesis-test/power-of-test.aspx?Tutorial=AP">http://stattrek.com/hypothesis-test/power-of-test.aspx?Tutorial=AP</a>)</p>
+
+<p>Wikipedia (<a href="https://en.wikipedia.org/wiki/Statistical_power">https://en.wikipedia.org/wiki/Statistical_power</a>)</p>
+
+<p>Minitab Express Support (<a href="http://support.minitab.com/en-us/minitab-express/1/help-and-how-to/basic-statistics/inference/supporting-topics/basics/increase-the-power-of-a-hypothesis-test/">http://support.minitab.com/en-us/minitab-express/1/help-and-how-to/basic-statistics/inference/supporting-topics/basics/increase-the-power-of-a-hypothesis-test/</a>)</p>
+
+<style>
+strong {
+  font-weight: bold;
+}
+em {
+  font-style: italic;
+}
+</style>
 
   </article>
   <!-- Presenter Notes -->
@@ -146,7 +175,21 @@ power
 </body>
   <!-- Load Javascripts for Widgets -->
   
-  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
   <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
   <!-- DONE LOADING HIGHLIGHTER JS FILES -->
